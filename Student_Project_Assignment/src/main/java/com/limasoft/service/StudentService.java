@@ -22,7 +22,8 @@ public class StudentService {
     public List<Student> findAll() {
         return studrepo.findAll();
     }
-
+    //The findById method in the StudentService class receives the id and calls the findById 
+    //method in the StudentRepository class, passing along the same id
     public Student findById(int id) {
         return studrepo.findById(id);
     }

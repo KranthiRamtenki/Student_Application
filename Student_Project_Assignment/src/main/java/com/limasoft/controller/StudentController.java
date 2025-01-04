@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 
-@RequestMapping("/api/students")
+//@RequestMapping("/api/students")
 public class StudentController {
     private final StudentService studentService;
 
@@ -17,13 +17,17 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping
+    @PostMapping("/student/insert")
+    
+    //@RequestBody annotation is Used for to convert the json object into the java object
+    //Spring takes the incoming JSON data, converts it into 
+    // a Student object, and passes it to the save() method
     public String save(@RequestBody Student student) {
         studentService.save(student);
         return "Student added successfully!";
     }
 
-    @GetMapping
+    @GetMapping("/student/getdata")
     public List<Student> findAll() {
         return studentService.findAll();
     }
