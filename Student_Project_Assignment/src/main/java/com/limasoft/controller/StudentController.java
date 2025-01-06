@@ -12,6 +12,9 @@ import java.util.List;
 
 public class StudentController {
     private final StudentService studentService;
+    
+    //Constructor injection helps to make the class immutable 
+    //(since the dependencies are set once and can't be changed).
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;

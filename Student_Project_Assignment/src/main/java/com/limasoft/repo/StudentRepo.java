@@ -14,13 +14,15 @@ import com.limasoft.model.Student;
 @Repository
 public class StudentRepo {
 	
-	    @Autowired
+	    
 	    JdbcTemplate jdbcTemplate;
 
-		/*
-		 * public StudentRepo(JdbcTemplate jdbcTemplate) { this.jdbcTemplate =
-		 * jdbcTemplate; }
-		 */
+	    //Constructor injection helps to make the class immutable 
+	    //(since the dependencies are set once and can't be changed).
+		  public StudentRepo(JdbcTemplate jdbcTemplate) { 
+			  this.jdbcTemplate = jdbcTemplate; 
+		  }
+		 
 
 	    public int save(Student student) {
 	        String sql = "INSERT INTO student (sdt_id,sdt_name,sdt_fname,sdt_age,sdt_gender,sdt_branch,sdt_addres) VALUES (?,?,?,?,?,?,?)";
@@ -54,7 +56,7 @@ public class StudentRepo {
 	       
 	        
 	        
-	      //inside the queryForObject() call, the RowMapper is responsible for mapping the result 
+	        //inside the queryForObject() call, the RowMapper is responsible for mapping the result 
             //of the query (the database row) to a Student object.
 	        // rowmapper{ class  object mapping (e.g., using RowMapper to convert query results into Java objects).
 	        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Student>() {
