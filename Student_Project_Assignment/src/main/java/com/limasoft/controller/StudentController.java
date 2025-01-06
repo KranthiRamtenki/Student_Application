@@ -1,4 +1,5 @@
 package com.limasoft.controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,20 +12,15 @@ import java.util.List;
 
 
 public class StudentController {
-    private final StudentService studentService;
+	
+	@Autowired
+    private  StudentService studentService;
     
-    //Constructor injection helps to make the class immutable 
-    //(since the dependencies are set once and can't be changed).
-
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
-
-    @PostMapping("/student/insert")
+	
     
     //@RequestBody annotation is Used for to convert the json object into the java object
-    //Spring takes the incoming JSON data, converts it into 
-    // a Student object, and passes it to the save() method
+    
+	@PostMapping("/student/insert")
     public String save(@RequestBody Student student) {
         studentService.save(student);
         return "Student added successfully!";

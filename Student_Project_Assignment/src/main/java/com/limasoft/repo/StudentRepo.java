@@ -14,15 +14,8 @@ import com.limasoft.model.Student;
 @Repository
 public class StudentRepo {
 	
-	    
-	    JdbcTemplate jdbcTemplate;
-
-	    //Constructor injection helps to make the class immutable 
-	    //(since the dependencies are set once and can't be changed).
-		  public StudentRepo(JdbcTemplate jdbcTemplate) { 
-			  this.jdbcTemplate = jdbcTemplate; 
-		  }
-		 
+	 @Autowired   
+	 private   JdbcTemplate jdbcTemplate;
 
 	    public int save(Student student) {
 	        String sql = "INSERT INTO student (sdt_id,sdt_name,sdt_fname,sdt_age,sdt_gender,sdt_branch,sdt_addres) VALUES (?,?,?,?,?,?,?)";
