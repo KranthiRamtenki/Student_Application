@@ -30,7 +30,11 @@ public class StudentRepo {
 
 	    public List<Student> findAll() {
 	        String sql = "SELECT * FROM student";
-	        return jdbcTemplate.query(sql, (rs, rowNum) -> {
+	        
+	    //The query() method in JdbcTemplate is used to execute 
+	    //a SQL query and map the result set to Java objects.    
+	        return jdbcTemplate.query(sql, 
+	        		(rs, rowNum) -> {
 	            Student student = new Student();
 	            student.setSdt_Id(rs.getInt("sdt_Id"));
 	            student.setSdt_name(rs.getString("sdt_name"));

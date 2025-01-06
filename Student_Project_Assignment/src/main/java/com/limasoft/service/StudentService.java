@@ -1,5 +1,6 @@
 package com.limasoft.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.limasoft.model.Student;
@@ -9,7 +10,12 @@ import java.util.List;
 
 @Service
 public class StudentService {
+	
+	
     private final StudentRepo studrepo;
+    
+    //Constructor injection helps to make the class immutable 
+    //(since the dependencies are set once and can't be changed).
 
     public StudentService(StudentRepo studrepo) {
         this.studrepo = studrepo;

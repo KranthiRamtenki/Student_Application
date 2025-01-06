@@ -31,8 +31,10 @@ public class StudentController {
     public List<Student> findAll() {
         return studentService.findAll();
     }
+    
 
     @GetMapping("/{id}")
+    // @PathVariable annotation is used to retrieve data from the URL path.
     public Student findById(@PathVariable int id) {
         return studentService.findById(id);
     }
